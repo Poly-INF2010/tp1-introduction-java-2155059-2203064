@@ -17,7 +17,25 @@ public final class LetterFactory {
      * @return BaseShape containing the letter A
      */
     public static BaseShape create_A()  {
-        return null;
+
+
+        // Create the central vertical bar of 'A'
+        Rectangle horizontalBar = new Rectangle(stripeThickness, maxWidth);
+
+        horizontalBar.rotate(horizontalBar.getCoords(),Math.toRadians(90.0));
+
+        Rectangle leftInclinedBar = new Rectangle(stripeThickness, maxHeight);
+        leftInclinedBar.rotate(leftInclinedBar.getCoords(), Math.toRadians(-45.0));
+
+        Rectangle rightInclinedBar = new Rectangle(stripeThickness, maxHeight);
+        rightInclinedBar.rotate(rightInclinedBar.getCoords(), Math.toRadians(45.0));
+
+        BaseShape letterA = new BaseShape();
+        letterA.add(horizontalBar);
+        letterA.add(leftInclinedBar);
+        letterA.add(rightInclinedBar);
+
+        return letterA;
     }
 
     /** TODO
@@ -25,7 +43,9 @@ public final class LetterFactory {
      * @return BaseShape containing the letter B
      */
     public static BaseShape create_B() {
-        return null;
+
+        BaseShape letterB = new BaseShape();
+        return letterB;
     }
 
     /** TODO
@@ -33,7 +53,8 @@ public final class LetterFactory {
      * @return BaseShape containing the letter C
      */
     public static BaseShape create_C() {
-        return null;
+        BaseShape letterC = new BaseShape();
+        return letterC;
     }
 
     /** TODO
@@ -41,7 +62,9 @@ public final class LetterFactory {
      * @return BaseShape containing the letter E
      */
     public static BaseShape create_E() {
-        return null;
+
+        BaseShape letterE = new BaseShape();
+        return letterE;
     }
 
     /** TODO
@@ -49,7 +72,9 @@ public final class LetterFactory {
      * @return BaseShape containing the letter H
      */
     public static BaseShape create_H() {
-        return null;
+
+        BaseShape letterH = new BaseShape();
+        return letterH;
     }
 
     /** TODO
@@ -57,7 +82,9 @@ public final class LetterFactory {
      * @return BaseShape containing the letter N
      */
     public static BaseShape create_N() {
-        return null;
+
+        BaseShape letterN = new BaseShape();
+        return letterN;
     }
 
     /** TODO
@@ -65,7 +92,14 @@ public final class LetterFactory {
      * @return BaseShape containing the letter O
      */
     public static BaseShape create_O() {
-        return null;
+
+        BaseShape letterO = new BaseShape();
+        return letterO;
     }
 
+
+
+
 }
+
+

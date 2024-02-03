@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class BaseShape extends Transform implements Cloneable {
     private final Collection<Point2d> coords;
+    protected static final double INCREMENT_FACTOR = 0.5;
 
 //helper function to clone a list of points 
   public Collection<Point2d> cloneCoords(Collection<Point2d> coords) {
@@ -62,9 +63,7 @@ public class BaseShape extends Transform implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape addAll(Collection<Point2d> coords) {
-        for(Point2d coord : coords){
-            add(coord);
-        }
+        this.coords.addAll(cloneCoords(coords));
         return this;
 
     }
@@ -85,11 +84,15 @@ public class BaseShape extends Transform implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape remove(BaseShape shape) {
-        for(Point2d coord : shape.coords){
-            coords.remove(coord);
-        }
+        Iterator<Point2d> itr = this.coords.iterator();
 
-        return null;
+        while (itr.hasNext()) {
+            Point2d coord = itr.next();
+            if (shape.coords.contains(coord)) {
+                itr.remove();
+            }
+        }
+        return this;
     }
 
     /** TODO
@@ -98,8 +101,14 @@ public class BaseShape extends Transform implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape removeAll(Collection<Point2d> coords) {
-        for(Point2d coord : coords){
-            this.coords.remove(coord);
+
+        Iterator<Point2d> itr = this.coords.iterator();
+
+        while(itr.hasNext()) {
+            Point2d coord = itr.next();
+            if (coords.contains(coord)) {
+                itr.remove();
+            }
         }
 
         return this;
@@ -142,14 +151,17 @@ public class BaseShape extends Transform implements Cloneable {
     public Double getMaxX() {
 
 
-        return coords.stream().mapToDouble(Point2d::X).max().orElse(-Double.MAX_VALUE);
+        //return coords.stream().mapToDouble(Point2d::X).max().orElse(-Double.MAX_VALUE);
+        return coords.stream().mapToDouble(Point2d::X).max().orElse(0.0);
+
     }
 
     /** TODO
      * @return Maximum Y coordinate of the shape
      */
     public Double getMaxY() {
-        return coords.stream().mapToDouble(Point2d::Y).max().orElse(-Double.MAX_VALUE);
+        //return coords.stream().mapToDouble(Point2d::Y).max().orElse(-Double.MAX_VALUE);
+        return coords.stream().mapToDouble(Point2d::Y).max().orElse(0.0);
     }
 
     /** TODO

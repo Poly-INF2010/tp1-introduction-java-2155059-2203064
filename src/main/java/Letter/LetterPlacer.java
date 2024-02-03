@@ -113,6 +113,9 @@ public class LetterPlacer {
         Point2d max = new BaseShape(shapes.stream()
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList())).getMaxCoord();
+        System.out.println("max.Y(): " + max.Y());
+        System.out.println("max.X(): " + max.X());
+        System.out.println("padding: " + padding);
 
         int[][] pixels = new int[(int)(max.Y() + padding)][(int)(max.X() + padding)];
         for (Collection<Point2d> coords : shapes) {
