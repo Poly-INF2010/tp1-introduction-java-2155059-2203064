@@ -17,9 +17,9 @@ public class Ellipse extends BaseShape {
 
         int nHorizontalPoints = (int) (widthDiameter/INCREMENT_FACTOR);
         int nVerctivalPoints =  (int) (heightDiameter/INCREMENT_FACTOR);
-        for(int i = 0; i <= nHorizontalPoints; i++)
+        for(int i = 0; i < nHorizontalPoints; i++)
         {
-            for(int j = 0; j <= nVerctivalPoints; j++)
+            for(int j = 0; j < nVerctivalPoints; j++)
             {
 
                 Double x = -halfWidthDiameter + i*INCREMENT_FACTOR;

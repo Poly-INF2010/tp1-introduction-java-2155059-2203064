@@ -151,8 +151,8 @@ public class BaseShape extends Transform implements Cloneable {
     public Double getMaxX() {
 
 
-        //return coords.stream().mapToDouble(Point2d::X).max().orElse(-Double.MAX_VALUE);
-        return coords.stream().mapToDouble(Point2d::X).max().orElse(0.0);
+        return coords.stream().mapToDouble(Point2d::X).max().orElse(-Double.MAX_VALUE);
+
 
     }
 
@@ -160,8 +160,8 @@ public class BaseShape extends Transform implements Cloneable {
      * @return Maximum Y coordinate of the shape
      */
     public Double getMaxY() {
-        //return coords.stream().mapToDouble(Point2d::Y).max().orElse(-Double.MAX_VALUE);
-        return coords.stream().mapToDouble(Point2d::Y).max().orElse(0.0);
+        return coords.stream().mapToDouble(Point2d::Y).max().orElse(-Double.MAX_VALUE);
+
     }
 
     /** TODO
