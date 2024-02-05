@@ -108,11 +108,11 @@ public final class LetterFactory {
     public static BaseShape create_H() {
 
         Rectangle leftSide = new Rectangle(stripeThickness/2, maxHeight);
-        leftSide.addAll(leftSide.translate(leftSide.getCoords(), new Point2d(- halfMaxWidth, 0.0)));
+        leftSide.translate(leftSide.getCoords(), new Point2d(- halfMaxWidth, 0.0));
         Rectangle rightSide = new Rectangle(stripeThickness/2, maxHeight);
-        rightSide.addAll(rightSide.translate(rightSide.getCoords(), new Point2d( halfMaxWidth, 0.0)));
+        rightSide.translate(rightSide.getCoords(), new Point2d( halfMaxWidth, 0.0));
         Rectangle middle = new Rectangle(maxWidth, stripeThickness/2 );
-        middle.addAll(middle.translate(middle.getCoords(), new Point2d( halfMaxWidth-30, maxHeight/1.5)));
+        middle.translate(middle.getCoords(), new Point2d( halfMaxWidth-30, maxHeight/1.5));
 
         return new BaseShape().add(rightSide).add(leftSide).add(middle);
     }
@@ -128,18 +128,14 @@ public final class LetterFactory {
         Rectangle diagonale = new Rectangle(halfStripeThickness, maxHeight+5);
 
 
-        leftSide.addAll(leftSide.translate(leftSide.getCoords(), new Point2d(-halfMaxWidth+21, 0.0)));
-        rightSide.addAll(rightSide.translate(rightSide.getCoords(), new Point2d(halfMaxWidth+21, 0.0)));
+        leftSide.translate(leftSide.getCoords(), new Point2d(-halfMaxWidth+21, 0.0));
+        rightSide.translate(rightSide.getCoords(), new Point2d(halfMaxWidth+21, 0.0));
         Double angle =  -1.3*Math.PI / 12;
-        diagonale.addAll(diagonale.rotate(diagonale.getCoords(), angle));
+        diagonale.rotate(diagonale.getCoords(), angle);
 
 
-        BaseShape Nshape = new BaseShape();
-        Nshape.add(leftSide);
-        Nshape.add(rightSide);
-        Nshape.add(diagonale);
+        return new BaseShape().add(leftSide).add(rightSide).add(diagonale);
 
-        return Nshape;
     }
 
     /** TODO
