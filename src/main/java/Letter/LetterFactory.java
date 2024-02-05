@@ -18,32 +18,23 @@ public final class LetterFactory {
      */
     public static BaseShape create_A()  {
 
+        Rectangle horizontalBar = (Rectangle) new Rectangle(maxWidth*(1.0/4.0), stripeThickness*(4.0/7.0));
 
-        // Create the central vertical bar of 'A'
-        Rectangle horizontalBar = new Rectangle(maxWidth*(1.0/4.0), stripeThickness*(4.0/7.0));
+        horizontalBar.translate(horizontalBar.getCoords(),new Point2d(new Double[] {0.0, halfMaxHeight}));
 
-
-        Double[] translateVectorX = {2.0, 0.0};
-        Double[] translateVectorY = {0.0, halfMaxHeight};
-        horizontalBar.translate(horizontalBar.getCoords(),new Point2d(translateVectorY));
-
-
+        Double angleInclination = 10.0;
         Rectangle leftInclinedBar = new Rectangle(stripeThickness*(4.0/7.0), maxHeight);
-        leftInclinedBar.rotate(leftInclinedBar.getCoords(), Math.toRadians(10.0));
+        leftInclinedBar.rotate(leftInclinedBar.getCoords(), Math.toRadians(angleInclination));
 
 
         Rectangle rightInclinedBar = new Rectangle(stripeThickness*(4.0/7.0), maxHeight);
-        rightInclinedBar.rotate(rightInclinedBar.getCoords(), Math.toRadians(-10.0));
-        rightInclinedBar.translate(rightInclinedBar.getCoords(),new Point2d(translateVectorX));
+        rightInclinedBar.rotate(rightInclinedBar.getCoords(), Math.toRadians(-angleInclination));
+        rightInclinedBar.translate(rightInclinedBar.getCoords(),new Point2d(new Double[] {2.0, 0.0}));
 
-        BaseShape letterA = new BaseShape();
-        letterA.add(horizontalBar);
-        letterA.add(leftInclinedBar);
-        letterA.add(rightInclinedBar);
-
-
-
-        return letterA;
+        return new BaseShape()
+                .add(horizontalBar)
+                .add(leftInclinedBar)
+                .add(rightInclinedBar);
     }
 
     /** TODO
@@ -66,11 +57,8 @@ public final class LetterFactory {
         leftBar.translate(leftBar.getCoords(),new Point2d(new Double[] {-25.0, 0.0}));
         leftBar.translate(leftBar.getCoords(),new Point2d(new Double[] {0.0, -28.0}));
 
-        BaseShape letterB = new BaseShape();
-        letterB.add(topEllipse);
-        letterB.add(bottomEllipse);
-        letterB.add(leftBar);
-        return letterB;
+        return new BaseShape().add(topEllipse).add(bottomEllipse).add(leftBar);
+
     }
 
     /** TODO
@@ -88,9 +76,7 @@ public final class LetterFactory {
                 croissant.remove(coord);
             }
         }
-        BaseShape letterC = new BaseShape();
-        letterC.add(croissant);
-        return letterC;
+        return new BaseShape().add(croissant);
     }
 
     /** TODO
@@ -111,18 +97,8 @@ public final class LetterFactory {
         leftVerticalBar.translate(leftVerticalBar.getCoords(),new Point2d(new Double[] {-halfMaxWidth,0.0}));
         leftVerticalBar.translate(leftVerticalBar.getCoords(),new Point2d(new Double[] {0.0,-(maxHeight+16.40) }));
 
+        return new BaseShape().add(leftVerticalBar).add(topHorizontalBar).add(bottomHorizontalBar).add(middleHorizontalBar);
 
-
-
-
-        BaseShape letterE = new BaseShape();
-        letterE.add(leftVerticalBar);
-        letterE.add(topHorizontalBar);
-        letterE.add(bottomHorizontalBar);
-        letterE.add(middleHorizontalBar);
-
-
-        return letterE;
     }
 
     /** TODO
@@ -138,11 +114,7 @@ public final class LetterFactory {
         Rectangle middle = new Rectangle(maxWidth, stripeThickness/2 );
         middle.addAll(middle.translate(middle.getCoords(), new Point2d( halfMaxWidth-30, maxHeight/1.5)));
 
-        BaseShape Hshape = new BaseShape();
-        Hshape.add(rightSide);
-        Hshape.add(leftSide);
-        Hshape.add(middle);
-        return Hshape;
+        return new BaseShape().add(rightSide).add(leftSide).add(middle);
     }
 
     /** TODO
@@ -154,10 +126,11 @@ public final class LetterFactory {
         Rectangle leftSide = new Rectangle(halfStripeThickness, maxHeight);
         Rectangle rightSide = leftSide.clone();
         Rectangle diagonale = new Rectangle(halfStripeThickness, maxHeight+5);
-        double angle =  -1.3*Math.PI / 12;
+
 
         leftSide.addAll(leftSide.translate(leftSide.getCoords(), new Point2d(-halfMaxWidth+21, 0.0)));
         rightSide.addAll(rightSide.translate(rightSide.getCoords(), new Point2d(halfMaxWidth+21, 0.0)));
+        Double angle =  -1.3*Math.PI / 12;
         diagonale.addAll(diagonale.rotate(diagonale.getCoords(), angle));
 
 

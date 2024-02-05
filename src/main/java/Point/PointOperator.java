@@ -14,8 +14,10 @@ public final class PointOperator {
 
         for (int i = 0; i < vector.length; i++)
         {
-            vector[i]= vector[i] + translateVector[i];
+            vector[i]+= translateVector[i];
         }
+
+
 
 
     }
